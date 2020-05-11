@@ -1,0 +1,14 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+
+int main()
+{
+  int x;
+  cin>>x;
+int *q = &x;
+float * p;
+p = (float *)q;
+cout <<(uintptr_t)&x << endl;
+return 0;
+}
