@@ -8,7 +8,8 @@ int main()
   string s;
   char r;
 cout<<"Enter string, char:";
-cin>>s>>r;
+getline(cin,s);
+cin>>r;
 int i=s.find_first_of(r);
 int j=s.find_last_of(r);
 cout<<j-1-i<<endl;
