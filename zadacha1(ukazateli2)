@@ -1,0 +1,40 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+
+int main()
+{
+  int num, m;
+  m=0;
+    cin >> num;
+    int *p_darr = new int[num];
+    for (int i = 0; i < num; i++)
+    {
+        p_darr[i] = rand();
+        cout << p_darr[i]<<"  " ;
+    }
+    cout<<"\n"<<"vtoroy massiv b"<<endl;
+    for (int i = 0; i < num; i++)
+    {
+      if(p_darr[i]==0)
+      {
+        m++;
+      }
+    }
+    m=num-m;
+    int ind=0;
+    int *k_cold = new int[m];
+    for (int i = 0; i < num; i++)
+    {
+       if (p_darr[i]!=0)
+       {
+         k_cold[ind]=p_darr[i]; ind++;
+       }
+    }
+    for (int i = 0; i < m; i++)
+    {
+        cout << k_cold[i]<<" ";
+    }
+    delete [] p_darr;
+    return 0;
+}
