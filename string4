@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdlib>
+#include <string>
+#include <cstring>
+
+using namespace std;
+int main()
+{
+  string s1, s2;
+  int n;
+  s1="ihateprogrammig";
+  s2="mm";
+  n=strlen(s1);
+  int m=0;
+  for(int i=0; i<n; i++)
+  {
+    int k=s2.find(s1, i);
+    if (k!=-1)
+     {
+       m++;
+     }
+  }
+  cout<<m<<endl;
+return 0;
+}
