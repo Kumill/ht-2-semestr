@@ -1,0 +1,135 @@
+/*2. Написать структуру дробей для точного представления рациональных чисел
+(в пределах вместимости int для числителя и знаменателя). Структура должна
+иметь:
+a) конструктор по умолчанию, задающий дробь 1/1
+b) конструктор по целому числу, задающий числитель (знаменатель устанавливается в единицу)
+c) конструктор по двум целым числам, задающий числитель и знаменатель
+d) перегруженные арифметические операции (+, , *, / )
+e) перегруженные операции сравнения (>, <, ==, != , >= , <=)
+Результат любой операции должен автоматически сокращаться. */
+#include<iostream>
+#include<cstdlib>
+#include<numeric>
+using namespace std;
+
+class Quotion
+{
+int num, dem;
+public:
+Quotion () 
+{ num = 1; dem = 1;}
+Quotion (int n) 
+{ num = n; dem = 1; }
+Quotion (int n, int d) 
+{ num = n; dem = d; }
+void print () 
+{ cout << num << '/' << dem << endl;}
+
+}; 
+
+Quotion common_demon(x, y)
+{
+  x.num*=y.dem;
+  y.num*=x.dem;
+  x.dem*=y.dem;
+  y.dem=x.dem;
+  return(x,y)
+}
+
+Quotion operator+ (Quotion x, Quotion y)
+{
+Quotion z;
+common_demon(x,y)
+z.num = x.num + y.num;
+z.im = x.dem ;
+return z;
+}
+
+Quotion operator- (Quotion x, Quotion y)
+{
+Quotion z;
+z.num = x.num - y.num;
+z.im = x.dem;
+return z;
+}
+
+Quotion operator* (Quotion x, Quotion y)
+{
+Quotion z;
+z.num = x.num * y.num;
+z.im = x.dem * y.dem;
+return z;
+}
+
+Quotion operator/ (Quotion x, Quotion y)
+{
+Quotion z;
+int a=y.num;
+y.num=y.dem;
+y.dem=a;
+z=x*y;
+return z;
+}
+
+bool operator == (Quotion x, Quotion y)
+{
+if (x.num == y.num && x.dem == y.dem)
+return true;
+else
+return false;
+}
+
+bool operator != (Quotion x, Quotion y)
+{
+if (x.num != y.num || x.dem != y.dem)
+return true;
+else
+return false;
+}
+
+bool operator > (Quotion x, Quotion y)
+{
+  common_demon(x,y)
+    if (x.num > y.num )
+    return true;
+    else
+    return false;
+}
+
+bool operator < (Quotion x, Quotion y)
+{
+  common_demon(x,y)
+    if (x.num < y.num )
+    return true;
+    else
+    return false;
+}
+
+bool operator >= (Quotion x, Quotion y)
+{
+  common_demon(x,y)
+    if (x.num >= y.num )
+    return true;
+    else
+    return false;
+}
+
+bool operator <= (Quotion x, Quotion y)
+{
+  common_demon(x,y)
+    if (x.num <= y.num )
+    return true;
+    else
+    return false;
+}
+
+int main()
+{
+Quotion x(2, 5), y(1, 3), z1, z2;
+z1 = x*y;
+z2= x/y;
+z3= x+y;
+z4=x-y;
+cout<<z1<<z2<<z3<<z4<<endl;
+return 0;
+}
