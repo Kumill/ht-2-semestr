@@ -1,0 +1,41 @@
+//Добавьте в структуру Complex перегруженные операции умножения и деления. 
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+struct Complex
+{
+double re, im;
+Complex () 
+{ re = 0; im = 0;}
+Complex (double r, double i) 
+{ re = r; im = i;}
+void print () 
+{ cout << re << '+' << im << 'i' << endl;}
+double mod () 
+{ return sqrt (re*re + im*im); }
+}; 
+
+Complex operator* (Complex x, Complex y)
+{
+Complex z;
+z.re = x.re * y.re - y.im * x.im;
+z.im = x.re * y.im + x.im * y.re;
+return z;
+}
+
+Complex operator/ (Complex x, Complex y)
+{
+Complex z;
+z.re = (x.re * y.re + y.im * x.im)/y.mod;
+z.im = (-x.re * y.im + x.im * y.re)/y.mod;
+return z;
+}
+
+int main()
+{
+Complex x(2, 5), y(1, 3), z1, z2;
+z1 = x*y;
+z2= x/y;
+z.print();
+return 0;
+}
